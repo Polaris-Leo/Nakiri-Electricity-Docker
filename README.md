@@ -66,12 +66,12 @@ docker pull nakiripolaris/nakiri-electricity:latest
 ```
 docker run -d \
   --name nakiri-electricity \
-  -p 这里替换成你的本机端口:8080 \（如：-p 8080:8080）
+  -p 这里替换成你的本机端口:8080 \ #（如：-p 8080:8080）
   -v $(pwd)/data:/app/data \
-  -e PART_ID=这里替换成校区 \（如：-e PART_ID=0）（0：代表奉贤校区 | 1：代表徐汇校区）
-  -e BUILD_ID=这里替换成你的楼号 \（如：-e BUILD_ID=1）
-  -e ROOM_ID=这里替换成你的房间号 \（如：-e ROOM_ID=101）
-  -e ROOM_URL="这里替换成你获取的URL链接（获取方式最下面有）" \（如：-e ROOM_URL="https://yktyd.ecust.edu.cn/epay/wxpage/wanxiao/eleresult?sysid=1&roomid=101&areaid=2&buildid=1"）
+  -e PART_ID=这里替换成校区 \ #（如：-e PART_ID=0）（0：代表奉贤校区 | 1：代表徐汇校区）
+  -e BUILD_ID=这里替换成你的楼号 \ #（如：-e BUILD_ID=1）
+  -e ROOM_ID=这里替换成你的房间号 \ #（如：-e ROOM_ID=101）
+  -e ROOM_URL="这里替换成你获取的URL链接（获取方式最下面有）" \ #（如：-e ROOM_URL="https://yktyd.ecust.edu.cn/epay/wxpage/wanxiao/eleresult?sysid=1&roomid=101&areaid=2&buildid=1"）
   nakiripolaris/nakiri-electricity:latest
 ```
 ##### 访问地址: http://你机器的IP:你设置的端口
