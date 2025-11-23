@@ -44,20 +44,16 @@ Nakiri Electricity 是一个现代化、高颜值的宿舍电量监控面板。
 
 数据库: SQLite3
 
-部署: Docker (Multi-stage build)
+## 部署方式: Docker
 
-🚀 Docker 部署 (推荐)
+🚀 Docker 部署
 
 这是最简单的部署方式。无需安装 Node.js 环境，只需 Docker 即可。
 
-1. 构建镜像
-
-在项目根目录下运行：
-
-docker build -t nakiri-electricity .
+### 1. 拉取
 
 
-2. 运行容器
+### 2. 运行容器
 
 使用 docker run 启动服务。你需要通过 -e 参数传入房间配置。
 
@@ -86,7 +82,7 @@ docker run -d \
 
 访问地址: http://localhost:8080
 
-3. 环境变量说明
+### 3. 环境变量说明
 
 变量名
 
@@ -144,7 +140,13 @@ PORT
 
 8080
 
-💻 本地开发指南
+### 4、高级配置：构建镜像
+
+如果你使用的是非AMD64架构的系统，或运行时报错，可在项目根目录下运行：
+
+docker build -t nakiri-electricity .
+
+## 💻 本地开发指南
 
 如果你想修改代码或进行二次开发：
 
@@ -159,7 +161,7 @@ npm install
 
 终端 1 (后端 API):
 
-# 设置必要的环境变量 (PowerShell 示例)
+### 设置必要的环境变量 (PowerShell 示例)
 $env:ROOM_ID="506"; node server.js
 
 
