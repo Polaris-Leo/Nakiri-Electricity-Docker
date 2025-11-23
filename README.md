@@ -123,6 +123,33 @@ docker build -t nakiri-electricity .
   <img src="assets/URL.jpg" width="300">
 </p>  
 
+## Nginx反向代理：
+示例配置：
+```
+server {
+        listen 443 ssl;
+        listen [::]:443 ssl;
+        server_name URL; #替换成你的域名
+        
+        ssl_certificate       /etc/nginx/ssl/URL.cer; #证书位置
+        ssl_certificate_key   /etc/nginx/ssl/URL.key; #私钥位置
+        
+        ssl_session_timeout 1d;
+        ssl_session_cache shared:MozSSL:10m;
+        ssl_session_tickets off;
+        ssl_protocols    TLSv1.2 TLSv1.3;
+        ssl_prefer_server_ciphers off;
+        
+        location / {
+            proxy_pass http://IP:PORT; #替换成你的IP和端口（如：http://192.168.1.2:8080）
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+        }
+    }
+```
+
 📄 License
 
 MIT License
