@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+body {
+  @apply bg-zinc-100 dark:bg-zinc-950;
+}
+
+/* --- 全局滚动条美化 (核心修改) --- */
+@layer utilities {
+  /* 1. 针对 Webkit 内核 (Chrome, Edge, Safari) */
+  ::-webkit-scrollbar {
+    width: 10px;  /* 纵向滚动条宽度 */
+    height: 10px; /* 横向滚动条高度 */
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent; /* 轨道背景透明，看起来更干净 */
+  }
+
+  ::-webkit-scrollbar-thumb {
+    /* bg-zinc-300: 浅色模式下的滚动条颜色
+       dark:bg-zinc-700: 深色模式下的滚动条颜色 (这就是解决白条的关键)
+       rounded-full: 圆角
+    */
+    @apply bg-zinc-300 dark:bg-zinc-700 rounded-full;
+    
+    /* 这里用了一个小技巧：通过透明边框和背景裁剪，让滚动条看起来有一圈内边距，不会贴着边 */
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+
+  /* 鼠标悬停时稍微加深颜色 */
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-zinc-400 dark:bg-zinc-600;
+  }
+}
+
+/* 2. 针对 Firefox (Firefox 不支持 -webkit-scrollbar，需要单独写) */
+@supports (scrollbar-color: auto) {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: theme('colors.zinc.300') transparent;
+  }
+
+  .dark * {
+    scrollbar-color: theme('colors.zinc.700') transparent;
+  }
+}
