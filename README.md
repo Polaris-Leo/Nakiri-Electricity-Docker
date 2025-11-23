@@ -1,4 +1,4 @@
-# Nakiri Electricity Monitor
+# Nakiri Electricity Docker
 
 Nakiri Electricity 是一个现代化、高颜值的宿舍电量监控面板。
 
