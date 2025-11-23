@@ -4,6 +4,8 @@ Nakiri Electricity 是一个现代化、高颜值的宿舍电量监控面板。
 
 它可以帮助你实时追踪特定房间的电力消耗情况，提供详细的图表分析、充值记录检测以及剩余可用天数估算。项目采用前后端分离架构（SERN Stack），并针对 Docker 部署进行了深度优化。
 
+![统计面板](assets/Dashboard.png)
+
 ✨ 功能特性
 
 📊 深度数据分析：
@@ -116,6 +118,7 @@ docker build -t nakiri-electricity .
 
 ## URL获取方式：
 去你充值电费的页面：信息办公众号（华理信管中心）- 微门户 - 电费充值 - 选择你的房间 - 进到充值界面（如图）
+![URL获取位置](assets/URL.jpg)
 右上角三个点，复制链接（复制的就是需要的URL）
 
 📄 License
