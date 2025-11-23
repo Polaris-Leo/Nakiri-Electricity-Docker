@@ -97,9 +97,9 @@ docker run -d \
 ### 3、高级配置：构建镜像
 
 如果你使用的是非AMD64架构的系统，或运行时报错，可在项目根目录下运行：
-
+```
 docker build -t nakiri-electricity .
-
+```
 📂 项目结构  
 .  
 ├── src/                # React 前端源码  
