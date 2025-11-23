@@ -118,10 +118,10 @@ docker build -t nakiri-electricity .
 
 ## URL获取方式：
 去你充值电费的页面：信息办公众号（华理信管中心）- 微门户 - 电费充值 - 选择你的房间 - 进到充值界面（如图）
+右上角三个点，复制链接（复制的就是需要的URL）
 <p align="center">
   <img src="assets/URL.jpg" width="300">
-</p>
-右上角三个点，复制链接（复制的就是需要的URL）
+</p>  
 
 📄 License
 
