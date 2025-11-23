@@ -50,134 +50,53 @@ Nakiri Electricity 是一个现代化、高颜值的宿舍电量监控面板。
 
 这是最简单的部署方式。无需安装 Node.js 环境，只需 Docker 即可。
 
-### 1. 拉取
+### 1. 拉取镜像（可选）
 
+使用命令从 Docker Hub 上拉取：
+```
+docker pull nakiripolaris/nakiri-electricity:latest
+```
 
 ### 2. 运行容器
 
 使用 docker run 启动服务。你需要通过 -e 参数传入房间配置。
 
-基本运行示例：
+#### 完整配置：
+**你需要修改4个环境变量，替换成你自己的信息**
+```
+docker run -d \
+  --name nakiri-electricity \
+  -p 这里替换成你的本机端口:8080 \（如：-p 8080:8080）
+  -v $(pwd)/data:/app/data \
+  -e PART_ID=这里替换成校区 \（如：-e PART_ID=0）（0：代表奉贤校区 | 1：代表徐汇校区）
+  -e BUILD_ID=这里替换成你的楼号 \（如：-e BUILD_ID=1）
+  -e ROOM_ID=这里替换成你的房间号 \（如：-e ROOM_ID=101）
+  -e ROOM_URL="这里替换成你获取的URL链接（获取方式最下面有）" \（如：-e ROOM_URL="https://yktyd.ecust.edu.cn/epay/wxpage/wanxiao/eleresult?sysid=1&roomid=101&areaid=2&buildid=1"）
+  nakiripolaris/nakiri-electricity:latest
+```
+##### 访问地址: http://你机器的IP:你设置的端口
 
+#### 示例配置：
+奉贤校区，1号楼1层，101号宿舍：
+```
 docker run -d \
   --name nakiri-electricity \
   -p 8080:8080 \
   -v $(pwd)/data:/app/data \
-  -e ROOM_ID=506 \
-  nakiri-electricity
-
-
-完整配置示例 (推荐使用完整 URL 以提高稳定性)：
-
-docker run -d \
-  --name nakiri-electricity \
-  -p 8080:8080 \
-  -v $(pwd)/data:/app/data \
-  -e ROOM_ID=101 \
-  -e BUILD_ID=1 \
   -e PART_ID=0 \
-  -e ROOM_URL="[https://yktyd.ecust.edu.cn/epay/wxpage/wanxiao/eleresult?sysid=1&roomid=101&areaid=2&buildid=1](https://yktyd.ecust.edu.cn/epay/wxpage/wanxiao/eleresult?sysid=1&roomid=101&areaid=2&buildid=1)" \
-  nakiri-electricity
+  -e BUILD_ID=1 \
+  -e ROOM_ID=101 \
+  -e ROOM_URL="https://yktyd.ecust.edu.cn/epay/wxpage/wanxiao/eleresult?sysid=1&roomid=101&areaid=2&buildid=1" \
+  nakiripolaris/nakiri-electricity:latest
+```
 
+##### 访问地址: http://localhost:8080
 
-访问地址: http://localhost:8080
-
-### 3. 环境变量说明
-
-变量名
-
-必填
-
-说明
-
-示例
-
-ROOM_ID
-
-✅
-
-房间号，用于数据库标识和默认查询
-
-506
-
-ROOM_URL
-
-⚠️
-
-强烈推荐。抓取电量的完整 URL。如果不填，系统会尝试根据 ROOM_ID 拼接默认 URL，但这可能因楼栋编号混乱而失败。
-
-https://yktyd...
-
-BUILD_ID
-
-❌
-
-楼栋号，仅用于前端标题显示
-
-1
-
-PART_ID
-
-❌
-
-校区 ID，仅用于前端标题显示 (0: 奉贤, 1: 徐汇)
-
-0
-
-DB_PATH
-
-❌
-
-SQLite 数据库路径，默认为 /app/data/main.db
-
-./data/main.db
-
-PORT
-
-❌
-
-服务运行端口，默认为 8080
-
-8080
-
-### 4、高级配置：构建镜像
+### 3、高级配置：构建镜像
 
 如果你使用的是非AMD64架构的系统，或运行时报错，可在项目根目录下运行：
 
 docker build -t nakiri-electricity .
-
-## 💻 本地开发指南
-
-如果你想修改代码或进行二次开发：
-
-1. 安装依赖
-
-npm install
-
-
-2. 启动开发环境
-
-你需要同时开启两个终端窗口：
-
-终端 1 (后端 API):
-
-### 设置必要的环境变量 (PowerShell 示例)
-$env:ROOM_ID="506"; node server.js
-
-
-终端 2 (前端 Vite):
-
-npm run dev
-
-
-访问 http://localhost:5173 进行开发调试。
-
-3. 本地构建
-
-npm run build
-
-
-构建完成后，dist 目录将包含静态文件，此时运行 node server.js 即可在 http://localhost:8080 看到完整应用。
 
 📂 项目结构
 
