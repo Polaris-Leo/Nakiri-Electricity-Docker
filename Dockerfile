@@ -57,9 +57,11 @@ RUN mkdir -p data
 ENV PORT=8080
 ENV DB_PATH=./data/main.db
 ENV ROOM_ID=""
-ENV ROOM_URL=""
+# 核心配置：
+ENV PART_ID="奉贤"
 ENV BUILD_ID=""
-ENV PART_ID="0"
+# 可选配置 (如果不填，会自动根据以上三个生成)
+ENV ROOM_URL=""
 
 EXPOSE 8080
 
