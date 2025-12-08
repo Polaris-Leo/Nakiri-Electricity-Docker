@@ -79,7 +79,43 @@ docker run -d \
 ##### 访问地址: http://你机器的IP:你设置的端口
 
 #### 示例配置：
-奉贤校区，1号楼1层，101号宿舍：
+##### 示例配置1：
+奉贤校区，5号楼，202：
+```
+docker run -d \
+  -p 8080:8080 \
+  -v $(pwd)/data:/app/data \
+  -e PART_ID="奉贤" \
+  -e BUILD_ID="5" \
+  -e ROOM_ID="202" \
+  --name elec-monitor \
+  nakiripolaris/nakiri-electricity:latest
+```
+##### 示例配置2：
+徐汇校区，13号楼，405：
+```
+docker run -d \
+  -p 8080:8080 \
+  -v $(pwd)/data:/app/data \
+  -e PART_ID="徐汇" \
+  -e BUILD_ID="13" \
+  -e ROOM_ID="405" \
+  --name elec-monitor \
+  nakiripolaris/nakiri-electricity:latest
+```
+##### 示例配置3：
+特殊楼栋 (徐汇南区4A)：
+```
+docker run -d \
+  -p 8080:8080 \
+  -v $(pwd)/data:/app/data \
+  -e PART_ID="徐汇" \
+  -e BUILD_ID="南区4A" \
+  -e ROOM_ID="101" \
+  nakiripolaris/nakiri-electricity:latest
+```
+##### 示例配置4（旧版，不推荐）：
+奉贤校区，1号楼，101：
 ```
 docker run -d \
   --name nakiri-electricity \
