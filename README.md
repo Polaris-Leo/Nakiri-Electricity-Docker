@@ -74,7 +74,7 @@ docker run -d \
   -e BUILD_ID=楼号 \ #（如：-e BUILD_ID=18 代表18号楼）
   -e ROOM_ID=宿舍号 \ #（如：-e ROOM_ID=101）（必填）
   -e ROOM_URL="（可选）如果上面的规则出现数据错误可以通过这条，强制替换成获取的正确URL链接（获取方式最下面有）" \
-                #（如：-e ROOM_URL="https://yktyd.ecust.edu.cn/epay/wxpage/wanxiao/eleresult?sysid=1&roomid=101&areaid=2&buildid=1"）（可选）
+  #（如：-e ROOM_URL="https://yktyd.ecust.edu.cn/epay/wxpage/wanxiao/eleresult?sysid=1&roomid=101&areaid=2&buildid=1"）
   nakiripolaris/nakiri-electricity:latest
 ```
 ##### 访问地址: http://你机器的IP:你设置的端口
