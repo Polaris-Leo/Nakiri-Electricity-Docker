@@ -70,10 +70,10 @@ docker run -d \
   --name nakiri-electricity \
   -p 这里替换成你的本机端口:8080 \ #（如：-p 8080:8080）（必填）
   -v 文件路径:/app/data \ #（如：-v $(pwd)/data:/app/data \）（用来存放数据库文件）（必填）
-  -e PART_ID=校区编号 \ #（如：-e PART_ID=0）（0：代表奉贤校区 | 1：代表徐汇校区）
-  -e BUILD_ID=楼号 \ #（如：-e BUILD_ID=1）
-  -e ROOM_ID=房间号 \ #（如：-e ROOM_ID=101）（必填）
-  -e ROOM_URL="替换成获取的URL链接（获取方式最下面有）" \ #（如：-e ROOM_URL="https://yktyd.ecust.edu.cn/epay/wxpage/wanxiao/eleresult?sysid=1&roomid=101&areaid=2&buildid=1"）（必填）
+  -e PART_ID=校区 \ #（如：-e PART_ID=奉贤）（奉贤|徐汇）
+  -e BUILD_ID=楼号 \ #（如：-e BUILD_ID=18 代表18号楼）
+  -e ROOM_ID=宿舍号 \ #（如：-e ROOM_ID=101）（必填）
+  -e ROOM_URL="（可选）如果上面的规则出现数据错误可以通过这条，强制替换成获取的正确URL链接（获取方式最下面有）" \ #（如：-e ROOM_URL="https://yktyd.ecust.edu.cn/epay/wxpage/wanxiao/eleresult?sysid=1&roomid=101&areaid=2&buildid=1"）（可选）
   nakiripolaris/nakiri-electricity:latest
 ```
 ##### 访问地址: http://你机器的IP:你设置的端口
